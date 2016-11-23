@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
 			$text_ex = explode(' ', $text);
-			if($text_ex[0] == "wiki")
+			if(strtolower($text_ex[0]) == "wiki")
 			{
 				$ch1 = curl_init();
 				curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
