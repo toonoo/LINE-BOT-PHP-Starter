@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
-			$text_ex = explode(':', $text);
+			$text_ex = explode(' ', $text);
 			if($text_ex[0] == "wiki")
 			{
 				$ch1 = curl_init();
@@ -31,6 +31,11 @@ if (!is_null($events['events'])) {
 				{ 
 					$text = $val['extract']; 
 				}
+				if($text == ""){
+					$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
+				}
+			}else{
+				$text = 'Hello Thailand';
 			}
 			// Build message to reply back
 			$messages = [
