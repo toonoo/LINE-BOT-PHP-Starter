@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
-			$text_ex = explode(':', $text);
+			//$text_ex = explode(':', $text);
 			// if($text_ex[0] == "wiki")
 			// {
 			// 	$ch1 = curl_init();
