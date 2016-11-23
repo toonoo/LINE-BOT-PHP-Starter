@@ -19,7 +19,7 @@ if (!is_null($events['events'])) {
 			$text_ex = explode(':', $text);
 			if($text_ex[0] == "wiki")
 			{
-			// 	$ch1 = curl_init();
+				$ch1 = curl_init();
 			// 	curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
 			// 	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
 			// 	curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text_ex[1]); 
