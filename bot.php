@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
 			// 	{ 
 			// 		$text = $val['extract']; 
 			// 	}
-			}
+			//}
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
