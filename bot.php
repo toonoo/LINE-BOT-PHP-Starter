@@ -16,9 +16,9 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
-			//$text_ex = explode(':', $text);
-			// if($text_ex[0] == "wiki")
-			// {
+			$text_ex = explode(':', $text);
+			if($text_ex[0] == "wiki")
+			{
 			// 	$ch1 = curl_init();
 			// 	curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
 			// 	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
 			// 	{ 
 			// 		$text = $val['extract']; 
 			// 	}
-			//}
+			}
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
