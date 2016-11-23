@@ -17,20 +17,20 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
 			$text_ex = explode(':', $text);
-			if($text_ex[0] == "wiki")
-			{
-				$ch1 = curl_init();
-				curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
-				curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
-				curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text_ex[1]); 
-				$result1 = curl_exec($ch1); 
-				curl_close($ch1); 
+			// if($text_ex[0] == "wiki")
+			// {
+			// 	$ch1 = curl_init();
+			// 	curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
+			// 	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
+			// 	curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text_ex[1]); 
+			// 	$result1 = curl_exec($ch1); 
+			// 	curl_close($ch1); 
 
-				$obj = json_decode($result1, true); 
-				foreach($obj['query']['pages'] as $key => $val)
-				{ 
-					$text = $val['extract']; 
-				}
+			// 	$obj = json_decode($result1, true); 
+			// 	foreach($obj['query']['pages'] as $key => $val)
+			// 	{ 
+			// 		$text = $val['extract']; 
+			// 	}
 			}
 			// Build message to reply back
 			$messages = [
