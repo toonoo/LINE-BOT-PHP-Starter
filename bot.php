@@ -1,5 +1,5 @@
 <?php
-$access_token = 'xx';
+$access_token = 'StMQQmUud2pB5f5h2RqjfdOnwO+zrrwsVGJWAkQ6K/+RBVJAHMps/OcPFQ65LcGKMhRRfbMRIBWKp9pELtIxjEg8lK5ol2SAobl8Drfg30y4aSXQtcvo5woZwet8WEXLVRDjMD+us6viLi+YEPr2LAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -32,6 +32,30 @@ if (!is_null($events['events'])) {
 			if($text == "")
 			{
 				$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
+			}else if($text == "แปล")
+			{
+			    $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
+			    //$text = 'Hello world!';
+			    $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=th';
+
+			    $handle = curl_init($url);
+			    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+			    $response = curl_exec($handle);
+			    $responseDecoded = json_decode($response, true);
+			    $responseCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);      //Here we fetch the HTTP response code
+			    curl_close($handle);
+
+			    if($responseCode != 200) 
+			    {
+			        $text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
+			        //echo 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
+			    }
+			    else 
+			    {
+			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
+			    }
+			}else{
+
 			}
 
 			// Build message to reply back
