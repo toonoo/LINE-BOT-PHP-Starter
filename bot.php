@@ -33,8 +33,8 @@ if (!is_null($events['events'])) {
 			// {
 			// 	$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
 			// }
-			if($text == "dog")
-			{
+			// if($text == "dog")
+			// {
 			    $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
 			    //$text = 'Hello world!';
 			    $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=th';
@@ -49,16 +49,15 @@ if (!is_null($events['events'])) {
 			    if($responseCode != 200) 
 			    {
 			        //$text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
-			        //$text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
-			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
+			        $text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
 			    }
 			    else 
 			    {
 			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
 			    }
-			}else{
+			// }else{
 
-			}
+			// }
 
 			// Build message to reply back
 			$messages = [
