@@ -49,7 +49,8 @@ if (!is_null($events['events'])) {
 			    if($responseCode != 200) 
 			    {
 			        //$text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
-			        $text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
+			        //$text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
+			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
 			    }
 			    else 
 			    {
