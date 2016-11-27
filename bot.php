@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 			// {
 			// 	$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
 			// }
-			if($text == "แปล")
+			if($text == "dog")
 			{
 			    $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
 			    //$text = 'Hello world!';
@@ -48,8 +48,8 @@ if (!is_null($events['events'])) {
 
 			    if($responseCode != 200) 
 			    {
-			        $text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
-			        //echo 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
+			        //$text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
+			        $text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
 			    }
 			    else 
 			    {
