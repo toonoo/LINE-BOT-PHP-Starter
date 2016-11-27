@@ -13,28 +13,9 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['message']['text'];
-			// Get replyToken
-			$replyToken = $event['replyToken'];
-			//ckeck word in message
-			$ch1 = curl_init();
-			curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
-			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
-			curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text); 
-			$result1 = curl_exec($ch1); 
-			curl_close($ch1); 
-
-			$obj = json_decode($result1, true); 
-			foreach($obj['query']['pages'] as $key => $val)
-			{ 
-				$text = $val['extract']; 
-			}
-
-			if($text == "")
+			if($text== "แปล")
 			{
-				$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
-			}else if($text == "แปล")
-			{
-			    $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
+				$apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
 			    //$text = 'Hello world!';
 			    $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=th';
 
@@ -54,6 +35,30 @@ if (!is_null($events['events'])) {
 			    {
 			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
 			    }
+			}
+			// // Get replyToken
+			// $replyToken = $event['replyToken'];
+			// //ckeck word in message
+			// $ch1 = curl_init();
+			// curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
+			// curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
+			// curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text); 
+			// $result1 = curl_exec($ch1); 
+			// curl_close($ch1); 
+
+			// $obj = json_decode($result1, true); 
+			// foreach($obj['query']['pages'] as $key => $val)
+			// { 
+			// 	$text = $val['extract']; 
+			// }
+
+			if($text == "")
+			{
+				$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
+			}
+			else if($text == "แปล")
+			{
+			    
 			}else{
 
 			}
