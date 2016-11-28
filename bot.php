@@ -16,45 +16,45 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			//ckeck word in message
-			// $ch1 = curl_init();
-			// curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
-			// curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
-			// curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text); 
-			// $result1 = curl_exec($ch1); 
-			// curl_close($ch1); 
+			$ch1 = curl_init();
+			curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false); 
+			curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true); 
+			curl_setopt($ch1, CURLOPT_URL, 'https://th.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles='.$text); 
+			$result1 = curl_exec($ch1); 
+			curl_close($ch1); 
 
-			// $obj = json_decode($result1, true); 
-			// foreach($obj['query']['pages'] as $key => $val)
-			// { 
-			// 	$text = $val['extract']; 
-			// }
+			$obj = json_decode($result1, true); 
+			foreach($obj['query']['pages'] as $key => $val)
+			{ 
+				$text = $val['extract']; 
+			}
 
-			// if($text == "")
-			// {
-			// 	$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
-			// }
+			if($text == "")
+			{
+				$text = 'ไม่มีข้้อมูลใน Wiki thai แมะ!!!';
+			}
 			// if($text == "dog")
 			// {
-			    $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
-			    //$text = 'Hello world!';
-			    $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=th';
+			    // $apiKey = 'AIzaSyA2MmYjmmWn4Wg2JSVtIcSJEngNntvQKU0';
+			    // //$text = 'Hello world!';
+			    // $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=en&target=th';
 
-			    $handle = curl_init($url);
-			    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-			    $response = curl_exec($handle);
-			    $responseDecoded = json_decode($response, true);
-			    $responseCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);      //Here we fetch the HTTP response code
-			    curl_close($handle);
+			    // $handle = curl_init($url);
+			    // curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+			    // $response = curl_exec($handle);
+			    // $responseDecoded = json_decode($response, true);
+			    // $responseCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);      //Here we fetch the HTTP response code
+			    // curl_close($handle);
 
-			    if($responseCode != 200) 
-			    {
-			        //$text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
-			        $text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
-			    }
-			    else 
-			    {
-			        $text = $responseDecoded['data']['translations'][0]['translatedText'];
-			    }
+			    // if($responseCode != 200) 
+			    // {
+			    //     //$text = 'Fetching translation failed! Server response code:' . $responseCode . '<br>';
+			    //     $text = 'Error description: ' . $responseDecoded['error']['errors'][0]['message'];
+			    // }
+			    // else 
+			    // {
+			    //     $text = $responseDecoded['data']['translations'][0]['translatedText'];
+			    // }
 			// }else{
 
 			// }
